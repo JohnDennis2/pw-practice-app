@@ -1,6 +1,8 @@
 import {test, expect} from '@playwright/test'
 
-
+test.beforeAll(async ({page}) => {
+     await page.goto('http://localhost:4200/')
+   });
 
 test.beforeAll(async () => {
      // Set timeout for this hook.
