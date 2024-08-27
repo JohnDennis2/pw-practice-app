@@ -22,3 +22,7 @@ test('locating child elements', async ({page}) => {
      await page.locator('nb-card').locator('nb-radio').locator(':text-is("Option 1")').click()
      await page.locator('nb-card').getByRole('button', {name: "Sign in"}).first().click()
 });
+
+test('locating parent elements', async ({page}) => {
+     await page.locator ('nb-card', {hasText: "Using the Grid"}).getByRole('textbox',{name:"Email"}).click()
+})
