@@ -16,3 +16,8 @@ test('user facing locators', async ({page}) => {
 await page.getByRole ('textbox', {name: "Email"}).first().click()
 await page.getByRole('button', {name: "Sign in"}).first().click()
 });
+
+test('locating child elements', async ({page}) => {
+     page.locator('nb-card nb-radio :text-is ("Option 1")').click()
+
+})
