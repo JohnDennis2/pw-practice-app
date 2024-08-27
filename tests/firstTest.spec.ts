@@ -4,10 +4,6 @@ test.beforeEach('navigate to page', async ({page}) => {
      await page.goto('http://localhost:4200/')
    });
 
-test.beforeAll(async () => {
-     // Set timeout for this hook.
-     test.setTimeout(60000);
-   });
 
 test('the first test', async ({page}) => {
      await page.goto('http://localhost:4200/')
@@ -16,6 +12,7 @@ test('the first test', async ({page}) => {
 })
 
 test('user facing locators', async ({page}) => {
+     await page.goto('http://localhost:4200/')
 await page.getByRole ('textbox', {name: "Email"}).click()
 await page.getByRole('button', {name: "Sign in"}).click()
 })
