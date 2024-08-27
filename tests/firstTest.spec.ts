@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test'
 
-test.beforeAll(async ({page}) => {
+test.beforeEach('navigate to page', async ({page}) => {
      await page.goto('http://localhost:4200/')
    });
 
