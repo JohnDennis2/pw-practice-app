@@ -13,6 +13,6 @@ test('the first test', async ({page}) => {
 
 test('user facing locators', async ({page}) => {
      await page.goto('http://localhost:4200/')
-await page.getByRole ('textbox', {name: "Email"}).click()
-await page.getByRole('button', {name: "Sign in"}).click()
+await page.getByRole ('textbox', {name: "Email"}).first().click()
+await page.getByRole('button', {name: "Sign in"}).first().click()
 })
