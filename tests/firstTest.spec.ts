@@ -27,3 +27,9 @@ test('locating child elements', async ({page}) => {
 test('locating parent elements', async ({page}) => {
      await page.locator ('nb-card', {hasText: "Using the Grid"}).getByRole('textbox',{name:"Email"}).click()
 })
+
+test('Resusing the locators', async ({page}) => {
+const basicForm = page.locator('nb-card').filter({hasText:"Basic Form"})
+const emailField = basicForm.getByRole('textbox',{name: "Email"})
+
+})
