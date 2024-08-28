@@ -13,8 +13,8 @@ test('the first test', async ({page}) => {
 //user facing locators
 test('user facing locators', async ({page}) => {
      await page.goto('http://localhost:4200/')
-     await page.waitForLoadState('networkidle');
-await page.getByRole("textbox", {name: "Email"}).first().click()
+     await page.waitForLoadState('load');
+     await page.getByText('Form Layouts').getByRole("textbox", {name: "Email"}).first().click()
 await page.getByRole('button', {name: "Sign in"}).first().click()
 });
 // child elements
