@@ -19,9 +19,9 @@ await page.getByRole('button', {name: "Sign in"}).first().click()
 });
 // child elements
 test('locating child elements', async ({page}) => {
-    await page.locator('nb-card-body nb-radio :text-is("Option 1")').click()
-     await page.locator('nb-card-body').locator('nb-radio').locator(':text-is("Option 1")').click()
-     await page.locator('nb-card-body').getByRole('button', {name: "Sign in"}).first().click()
+    await page.locator('nb-card nb-radio :text-is("Option 1")').click()
+     await page.locator('nb-card').locator('nb-radio').locator(':text-is("Option 1")').click()
+     await page.locator('nb-card').getByRole('button', {name: "Sign in"}).first().click()
 });
 //parent elements
 test('locating parent elements', async ({page}) => {
@@ -37,3 +37,25 @@ await basicForm.getByRole('button').click()
 
 await expect(emailField).toHaveValue('test@test.com')
 })
+
+//extracting values
+
+test('extracting values', async ({page}) =>{
+     const basicForm = page.locator('nb-card').filter({hasText:"Basic form"})
+     const buttonText = await basicForm.locator('button').textContent()
+     expect(buttonText).toEqual('Submit')
+
+     //all text values
+     const allRadioButtonsLabels = await page.locator('nb-radio').allTextContents()
+     expect(allRadioButtonsLabels).toContain("Option 1 ")
+
+     //input value fields
+
+     const emailField = basicForm.getByRole('textbox', {name: "Email"})
+     await emailField.fill('test@test.com')
+     const emailValue = await emailField.inputValue()
+     expect(emailValue).toEqual('test@test.com')
+
+})
+
+
