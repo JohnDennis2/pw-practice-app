@@ -57,5 +57,14 @@ test('extracting values', async ({page}) =>{
      expect(emailValue).toEqual('test@test.com')
 
 })
+ 
+test ('assertions', async ({page})=> {
+     const basicFormButton = page.locator('nb-card').filter({hasText:"Basic Form"}).locator('button')
 
+     // general assertions
+     const value = 5
+     expect(value).toEqual(5)
 
+     const text = await basicFormButton.textContent()
+     expect(text).toEqual("Submit")
+})
