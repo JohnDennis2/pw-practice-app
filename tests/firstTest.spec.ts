@@ -14,14 +14,14 @@ test('the first test', async ({page}) => {
 test('user facing locators', async ({page}) => {
      await page.goto('http://localhost:4200/')
      await page.waitForLoadState('networkidle');
-await page.getByRole ('textbox', {name: "Email"}).first().click()
+await page.getByRole("textbox", {name: "Email"}).first().click()
 await page.getByRole('button', {name: "Sign in"}).first().click()
 });
 // child elements
 test('locating child elements', async ({page}) => {
-    await page.locator('nb-card nb-radio :text-is("Option 1")').click()
-     await page.locator('nb-card').locator('nb-radio').locator(':text-is("Option 1")').click()
-     await page.locator('nb-card').getByRole('button', {name: "Sign in"}).first().click()
+    await page.locator('nb-card-body nb-radio :text-is("Option 1")').click()
+     await page.locator('nb-card-body').locator('nb-radio').locator(':text-is("Option 1")').click()
+     await page.locator('nb-card-body').getByRole('button', {name: "Sign in"}).first().click()
 });
 //parent elements
 test('locating parent elements', async ({page}) => {
