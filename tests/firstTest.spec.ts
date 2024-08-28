@@ -31,5 +31,9 @@ test('locating parent elements', async ({page}) => {
 test('Resusing the locators', async ({page}) => {
 const basicForm = page.locator('nb-card').filter({hasText:"Basic Form"})
 const emailField = basicForm.getByRole('textbox',{name: "Email"})
+await emailField.fill('test@test.com')
+await basicForm.getByRole('textbox', {name: "Password"}).fill('Welcome123')
+await basicForm.getByRole('button').click()
 
+await expect(emailField).toHaveValue('test@test.com')
 })
