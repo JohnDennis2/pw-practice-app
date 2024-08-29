@@ -12,7 +12,7 @@ test('the first test', async ({page}) => {
 });
 //user facing locators
 test('user facing locators', async ({page}) => {
-     await page.goto('http://localhost:4200/')
+     
      await page.waitForLoadState('load');
      await page.getByText('Form Layouts').getByRole("textbox", {name: "Email"}).first().click()
 await page.getByRole('button', {name: "Sign in"}).first().click()
@@ -67,4 +67,12 @@ test ('assertions', async ({page})=> {
 
      const text = await basicFormButton.textContent()
      expect(text).toEqual("Submit")
+
+     //Locator Assertions
+     await expect(basicFormButton).toHaveText("Submit")
+
+     //Soft Assertion
+
+await expect.soft(basicFormButton).toHaveText('Submit')
+await basicFormButton.click()
 })
