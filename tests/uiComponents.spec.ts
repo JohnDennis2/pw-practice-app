@@ -31,10 +31,10 @@ test.describe('Form Layouts page', () => {
         const usingTheGridForm = page.locator('nb-card' , {hasText: "Using the Grid"})
 
         await usingTheGridForm.getByLabel('Option 1').check({force: true})
-        const ra dioStatus = await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()
+        const radioStatus = await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()
         expect (radioStatus).toBeTruthy()
         await expect(usingTheGridForm.getByRole('radio', {name:"Option 1"})).toBeChecked()
-    }
+    
 })
 
 test('list and drpdowns', async ({page}) => {
@@ -47,5 +47,8 @@ test('list and drpdowns', async ({page}) => {
     //const optionList = page.getByRole ('list').locator.('nb-option')
     const optionList = page.locator('nb-option-list nb-otion')
     await expect(optionList).toHaveText(["Light", "Dark", "Cosmic","Corporate"])
-    await optionList.filter ({hasText: "Cosmic"})
+    await optionList.filter ({hasText: "Cosmic"}).click()
+
+
 })
+    })
