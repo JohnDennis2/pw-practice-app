@@ -31,8 +31,21 @@ test.describe('Form Layouts page', () => {
         const usingTheGridForm = page.locator('nb-card' , {hasText: "Using the Grid"})
 
         await usingTheGridForm.getByLabel('Option 1').check({force: true})
-        const redioStatus = await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()
+        const ra dioStatus = await usingTheGridForm.getByRole('radio', {name: "Option 1"}).isChecked()
         expect (radioStatus).toBeTruthy()
         await expect(usingTheGridForm.getByRole('radio', {name:"Option 1"})).toBeChecked()
     }
+})
+
+test('list and drpdowns', async ({page}) => {
+    const dropDownMenu = page.locator('ngx-header nb-select')
+    await dropDownMenu.click()
+
+    page.getByRole('list')// when the list has a UL tag
+    page.getByRole('listitem')//when the list has a LI tag
+
+    //const optionList = page.getByRole ('list').locator.('nb-option')
+    const optionList = page.locator('nb-option-list nb-otion')
+    await expect(optionList).toHaveText(["Light", "Dark", "Cosmic","Corporate"])
+    await optionList.filter ({hasText: "Cosmic"})
 })
