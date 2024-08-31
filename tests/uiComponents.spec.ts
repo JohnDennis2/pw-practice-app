@@ -45,7 +45,7 @@ test('list and drpdowns', async ({page}) => {
     page.getByRole('listitem')//when the list has a LI tag
 
     //const optionList = page.getByRole ('list').locator.('nb-option')
-    const optionList = page.locator('nb-option-list nb-otion')
+    const optionList = page.locator('nb-option-list nb-option')
     await expect(optionList).toHaveText(["Light", "Dark", "Cosmic","Corporate"])
     await optionList.filter ({hasText: "Cosmic"}).click()
 
