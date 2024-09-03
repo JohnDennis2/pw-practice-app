@@ -14,7 +14,7 @@ test.describe('Form Layouts page', () => {
         
         await usingTheGridEmailInput.fill('test@test.com')
         await usingTheGridEmailInput.clear()
-    await usingTheGridEmailInput.pressSequentially('test2@test.com')
+        await usingTheGridEmailInput.pressSequentially('test2@test.com')
     
 
     // generic assertions
@@ -51,4 +51,12 @@ test('list and drpdowns', async ({page}) => {
 
 
 })
+    })
+
+    test('checkboxes', async({page}) => {
+        await page.getByText('Models & Overlays').click()
+        await page.getByText('Toaster').click()
+
+        await page.getByRole('checkbox', {name: "Hide on click"}).uncheck({force:true})
+        await page.getByRole('checkbox', {name: "Prevent arising of dupilcate toast"}).check({force:true})
     })
