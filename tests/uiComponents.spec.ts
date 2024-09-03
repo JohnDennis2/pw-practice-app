@@ -59,4 +59,10 @@ test('list and drpdowns', async ({page}) => {
 
         await page.getByRole('checkbox', {name: "Hide on click"}).uncheck({force:true})
         await page.getByRole('checkbox', {name: "Prevent arising of dupilcate toast"}).check({force:true})
+
+        const allBoxes = page.getByRole('checkbox')
+        for ( const box of await allBoxes.all()) {
+            await box.check({force: true})
+            expect(await box.isChecked()).toBeTruthy()
+        }
     })
