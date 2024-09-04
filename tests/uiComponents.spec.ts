@@ -66,3 +66,18 @@ test('list and drpdowns', async ({page}) => {
             expect(await box.isChecked()).toBeTruthy()
         }
     })
+
+    test('dropdown menus and list', async({page}) => {
+        const dropDownMenu = page.locator('ngx-header nb-select')
+        await dropDownMenu.click()
+
+        page.getByRole('list') //when the list has a UL tag
+        page.getByRole('listitem') //when the list has an LI tag
+
+        //const optionList = page.getByRole('list').locator('nb-options')
+
+        const optionList = page.locator('nb-options-list nb-options')
+        await expect(optionList).toHaveText(["Light"," Dark", "Cosmic" , "Coroprate"])
+
+
+    })
