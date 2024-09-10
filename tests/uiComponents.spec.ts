@@ -178,10 +178,13 @@ test('date picker', async({page}) => {
     let date = new Date()
     date.setDate(date.getDate() + 1)
     const expectedDate = date.getDate().toString()
+    const expectedMonthShort = date.toLocaleTimeString('En-US', {month: 'short'})
+    const expectedYear = date.getFullYear()
+    const dateToAssert = `${expectedMonthShort} ${expectedDate}, ${expectedYear}`
 
     await page.locator('[class="day-cell ng-star-inserted"]').getByText('1', {exact:true}).click()
 
-    await expect(calendarInputField).toHaveValue('Jun 21,2023')
+    await expect(calendarInputField).toHaveValue(dateToAssert)
 
 })
 
