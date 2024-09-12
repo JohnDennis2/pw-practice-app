@@ -179,8 +179,19 @@ test('date picker', async({page}) => {
     date.setDate(date.getDate() + 1)
     const expectedDate = date.getDate().toString()
     const expectedMonthShort = date.toLocaleTimeString('En-US', {month: 'short'})
+    const expectedMonthLong = date.toLocaleTimeString('En-US', {month: 'long'})
+
+
     const expectedYear = date.getFullYear()
     const dateToAssert = `${expectedMonthShort} ${expectedDate}, ${expectedYear}`
+
+    let calendarMonthAndYear = await page.locator('nb-calendar-view-mode').textContent()
+    const expectedMonthAndYear = `${expectedMonthLong} ${expectedYear}`
+    while(!calendarMonthAndYear.includes(expectedMonthAndYear)){
+        await page.locator('nb-calendar-pageable-navigation [data-name="cheveron-right"]').click()
+        calendarMonthAndYear = await page.locator('nb-calendar-view-mode').textContent()
+
+    }
 
     await page.locator('[class="day-cell ng-star-inserted"]').getByText('1', {exact:true}).click()
 
