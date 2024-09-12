@@ -199,3 +199,5 @@ test('date picker', async({page}) => {
 
 })
 
+test('sliders', )
+
