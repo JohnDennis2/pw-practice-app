@@ -7,6 +7,6 @@ test.beforeEach(async({page}) => {
 
 test('navigate to form page', async ({page})=>{
     const navigateTo= new NavigationPage(page)
-    navigateTo.formLayoutsPage()
+    await navigateTo.formLayoutsPage()
 
 })
